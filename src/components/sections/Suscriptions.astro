@@ -1,0 +1,117 @@
+---
+// Subscription Plan Component
+import Title from '../shared/Title.astro';
+import Container from '../shared/Container.astro';
+
+export interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+
+const initialPlan = {
+  name: "Plan Inicial",
+  price: "L.6,000 mensuales",
+  features: [
+    { text: "Gestion de redes sociales" },
+    { text: "12 publicaciones al mes en tus redes" },
+    { text: "stories interactivas" },
+    { text: "Creación de logo" },
+    { text: "Reporte Mensual de estadisticas", highlighted: true }
+  ],
+  moreDetails: [
+    "Diseño responsivo",
+    "Optimización básica para dispositivos móviles",
+    "Integración de formulario de contacto",
+    "Soporte por correo electrónico"
+  ]
+};
+
+const intermedioPlan = {
+  name: "Plan Intermedio",
+  price: "L.10,0000 mensuales",
+  features: [
+  { text: "Gestion de redes sociales" },
+    { text: "16 publicaciones al mes" },
+    { text: "creacion de foto de perfil y portada para tus redes" },
+    { text: "4 reels" },
+    { text: "Interaccion con seguidores" },
+    { text: "Logos, diseños variados como volantes, banners y brochure" },
+    { text: "Reporte Mensual de estadisticas", highlighted: true }
+  ],
+  moreDetails: [
+    "Diseño totalmente personalizado",
+    "Optimización SEO avanzada",
+    "Integración de Google Analytics",
+    "Análisis de palabras clave",
+    "Soporte prioritario por correo y chat"
+  ]
+};
+
+const premiumPlan = {
+  name: "Plan Premium",
+  price: "L.15,000 mensuales",
+  features: [
+  { text: "Gestion de redes sociales" },
+    { text: "24 publicaciones al mes" },
+    { text: "creacion de foto de perfil y portada para tus redes" },
+    { text: "8 reels" },
+    { text: "Interaccion con seguidores" },
+    { text: "Logos, diseños variados como volantes, banners y brochure" },
+    { text: "Gestion de mensajes" },
+    { text: "Asesoria mensual" },
+    { text: "Creación y Edición de Videos" },
+    { text: "Reporte Mensual SEO premium", highlighted: true }
+  ],
+  moreDetails: [
+    "Diseño de marca corporativa completo",
+    "Consultoría de marketing digital mensual",
+    "Optimización SEO profesional",
+    "Campaña de Google Ads básica",
+    "Soporte VIP 24/7",
+    "Auditoría de rendimiento web trimestral"
+  ]
+};
+---
+
+<section id="suscriptions" class=`container mx-auto px-4 py-12 ${className}`>
+    <Container>
+    <Title>Suscripciones Dispoibles</Title>
+  <div class="grid md:grid-cols-3 gap-8 mt-8">
+    {[initialPlan, intermedioPlan, premiumPlan].map((plan) => (
+      <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-all hover:scale-105 hover:shadow-2xl">
+        <div class="p-6 flex-grow flex flex-col">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">{plan.name}</h2>
+          
+          <div class="mb-6">
+            <span class="text-3xl font-extrabold text-blue-600">{plan.price}</span>
+          </div>
+          
+          <ul class="space-y-4 mb-6 flex-grow">
+            {plan.features.map((feature) => (
+              <li class={`flex items-start ${feature.highlighted ? 'font-bold text-blue-700' : 'text-gray-700'}`}>
+                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+                <span>{feature.text}</span>
+              </li>
+            ))}
+          </ul>
+          
+          <div class="space-y-2 mb-6 hidden" id={`more-details-${plan.name.toLowerCase().replace(/\s+/g, '-')}`}>
+            <h3 class="text-lg font-semibold text-gray-800 mt-4">Detalles adicionales:</h3>
+            {plan.moreDetails.map((detail) => (
+              <div class="flex items-center text-gray-600">
+                <svg class="w-4 h-4 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                </svg>
+                {detail}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</Container>
+</section>
