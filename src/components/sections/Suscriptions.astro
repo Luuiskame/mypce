@@ -77,43 +77,45 @@ const premiumPlan = {
 ---
 
 <section id="suscriptions" class=`container mx-auto px-4 py-12 ${className}`>
-    <Container>
-    <Title>Suscripciones Dispoibles</Title>
-  <div class="grid md:grid-cols-3 gap-8 mt-8">
-    {[initialPlan, intermedioPlan, premiumPlan].map((plan) => (
-      <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col transform transition-all hover:scale-105 hover:shadow-2xl  bg-gradient-to-br from-slate-100 to-zinc-200 dark:from-slate-800 dark:to-zinc-800">
-        <div class="p-6 flex-grow flex flex-col">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4"><GradiantText>{plan.name}</GradiantText></h2>
-          
-          <div class="mb-6">
-            <span class="text-3xl font-extrabold text-blue-600">{plan.price}</span>
-          </div>
-          
-          <ul class="space-y-4 mb-6 flex-grow">
-            {plan.features.map((feature) => (
-              <li class={`flex items-start ${feature.highlighted ? 'font-bold text-blue-700' : 'text-gray-700'}`}>
-                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-                <Paragraph>{feature.text}</Paragraph>
-              </li>
-            ))}
-          </ul>
-          
-          <div class="space-y-2 mb-6 hidden" id={`more-details-${plan.name.toLowerCase().replace(/\s+/g, '-')}`}>
-            <h3 class="text-lg font-semibold text-gray-800 mt-4">Detalles adicionales:</h3>
-            {plan.moreDetails.map((detail) => (
-              <div class="flex items-center text-gray-600">
-                <svg class="w-4 h-4 text-blue-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
-                </svg>
-                {detail}
-              </div>
-            ))}
+  <Container>
+    <Title>Suscripciones Disponibles</Title>
+    <div class="grid md:grid-cols-3 gap-8 mt-8">
+      {[initialPlan, intermedioPlan, premiumPlan].map((plan) => (
+        <div class="border rounded-3xl border-box-border border-box-bg bg-box-bg shadow-lg divide-y divide-slate-200 dark:divide-slate-800 overflow-hidden transform transition-all hover:scale-105 hover:shadow-2xl">
+          <div class="p-6 flex-grow flex flex-col">
+            <h2 class="text-2xl font-bold text-heading-1 mb-4">
+              <GradiantText>{plan.name}</GradiantText>
+            </h2>
+
+            <div class="mb-6">
+              <span class="text-3xl font-extrabold text-primary">{plan.price}</span>
+            </div>
+
+            <ul class="space-y-4 mb-6 flex-grow">
+              {plan.features.map((feature) => (
+                <li class={`flex items-start ${feature.highlighted ? 'font-bold text-primary' : 'text-body'}`}>
+                  <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <Paragraph>{feature.text}</Paragraph>
+                </li>
+              ))}
+            </ul>
+
+            <div class="space-y-2 mb-6 hidden" id={`more-details-${plan.name.toLowerCase().replace(/\s+/g, '-')}`}>
+              <h3 class="text-lg font-semibold text-heading-1 mt-4">Detalles adicionales:</h3>
+              {plan.moreDetails.map((detail) => (
+                <div class="flex items-center text-body">
+                  <svg class="w-4 h-4 text-primary mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  {detail}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    ))}
-  </div>
-</Container>
+      ))}
+    </div>
+  </Container>
 </section>
