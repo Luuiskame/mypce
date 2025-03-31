@@ -9,21 +9,27 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/agency-template/favicon.svg" />
+    <link rel="icon" type="image/jpg" href="/mypce-logo.jpg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Agency template made with ASTROJS and TAILWINDCSS"
-    />
-    <title>Agency template - {title}</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="description" content="Mypce es una agencia de marketing en Honduras que ofrece servicios de SEO, publicidad digital y más para ayudar a tu negocio a crecer." />
+    <meta name="keywords" content="agencia de marketing, marketing digital, SEO, Honduras, mypce" />
+    <title>Mypce - {title}</title>
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Mypce - Agencia de Marketing en Honduras" />
+    <meta property="og:description" content="Descubre cómo Mypce puede ayudar a tu negocio con estrategias de marketing digital efectivas en Honduras." />
+    <meta property="og:image" content="https://www.mypce.com/mypce-preview.png" />
+    <meta property="og:url" content="https://www.mypce.com" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mypce - Agencia de Marketing en Honduras" />
+    <meta name="twitter:description" content="Descubre cómo Mypce puede ayudar a tu negocio con estrategias de marketing digital efectivas en Honduras." />
+    <meta name="twitter:image" content="https://www.mypce.com/mypce-preview.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/agency-template/style/custom.css" />
   </head>
   <body class="overflow-hidden overflow-y-auto bg-body">
@@ -31,12 +37,10 @@ const { title } = Astro.props;
     <slot />
     <Footer />
   </body>
+  <!-- Your existing scripts remain unchanged -->
   <script>
     detectSystemTheme();
-
-    const switchTheme = document.querySelector(
-      "[data-switch-theme]"
-    ) as HTMLButtonElement;
+    const switchTheme = document.querySelector("[data-switch-theme]") as HTMLButtonElement;
     switchTheme.addEventListener("click", (e) => {
       e.preventDefault();
       changeThemeManually();
@@ -44,17 +48,13 @@ const { title } = Astro.props;
 
     function changeThemeManually() {
       const localAppTheme = localStorage.getItem("theme");
-      // Whenever the user explicitly chooses dark mode, previously it was light mode
       if (localAppTheme === "light") {
         changeThemeToDark();
       }
-      // Whenever the user explicitly chooses light mode, previously it was dark mode
       if (localAppTheme === "dark") {
         changeThemeToLight();
       }
       if (!localAppTheme) {
-        console.log("previously it was not set");
-        // Whenever the user explicitly chooses to respect the OS preference
         detectSystemTheme(true);
       }
     }
@@ -62,8 +62,7 @@ const { title } = Astro.props;
     function detectSystemTheme(manual = false) {
       if (
         localStorage.getItem("theme") === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
         document.documentElement.classList.add("dark");
         if (manual) localStorage.setItem("theme", "dark");
@@ -84,13 +83,9 @@ const { title } = Astro.props;
     }
   </script>
   <script>
-    const toggleMenu = document.querySelector(
-      "[data-toggle-nav]"
-    ) as HTMLButtonElement;
+    const toggleMenu = document.querySelector("[data-toggle-nav]") as HTMLButtonElement;
     const navbar = document.querySelector("[data-navbar]") as HTMLDivElement;
-    const overlayNav = document.querySelector(
-      "[data-nav-overlay]"
-    ) as HTMLDivElement;
+    const overlayNav = document.querySelector("[data-nav-overlay]") as HTMLDivElement;
     if (toggleMenu) {
       toggleMenu.addEventListener("click", (e) => {
         e.preventDefault();
